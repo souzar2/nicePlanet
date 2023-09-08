@@ -1,3 +1,28 @@
+<?php
+include('conexao.php');
+include('protect.php');
+
+if(isset($_POST['idPropriedade']) && isset($_POST['nomePropriedade']) && isset($_POST['cadastroRural'])) {
+    $idPropriedade = $mysqli->real_escape_string($_POST['idPropriedade']);
+    $nomePropriedade = $mysqli->real_escape_string($_POST['nomePropriedade']);
+    $cadastroRural = $mysqli->real_escape_string($_POST['cadastroRural']);
+    
+    $sql = "INSERT INTO Propriedade (idPropriedade, nomePropriedade, cadastroRural) 
+            VALUES ('$idPropriedade', '$nomePropriedade', '$cadastroRural')";
+
+    if ($mysqli->query($sql) === TRUE) {
+        echo "Cadastro de Propriedade realizado com sucesso!";
+    } else {
+        echo "Erro na inserção: " . $mysqli->error;
+    }
+    
+}
+
+$mysqli->close();
+?>
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -18,12 +43,16 @@
             <input type="text" name="nomePropriedade">
         </p>
         <p>
-            <label>CPF do Propriedade</label>
-            <input type="number" name="cpfPropriedade">
+            <label>Cadastro Rural</label>
+            <input type="number" name="cadastroRural">
         </p>
         <p>
             <button type="submit">Cadastrar</button>
         </p>
     </form>
+
+    <p>
+        <a href="cadastros_Pesquisas.php">Voltar</a>
+    </p>
 </body>
 </html>

@@ -26,7 +26,7 @@ if(isset($_POST['nomeUsuario']) || isset($_POST['senhaUsuario'])) {
             $_SESSION['idUsuario'] = $usuario['idUsuario'];
             $_SESSION['nomeUsuario'] = $usuario['nomeUsuario'];
 
-            header("Location: cadastros.php");
+            header("Location: cadastros_Pesquisas.php");
 
         } else {
             echo "Falha ao logar! E-mail ou senha incorretos";

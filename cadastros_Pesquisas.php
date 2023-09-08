@@ -1,7 +1,7 @@
 <?php
 
 include('protect.php');
-include('conexao.php');
+include('protect.php');
 
 ?>
 <!DOCTYPE html>
@@ -19,6 +19,12 @@ include('conexao.php');
     </p>
     <p>
         <a href="cadastroPropriedade.php">Cadastrar Propriedade</a>
+    </p>
+    <p>
+        <a href="pesquisarProdutor.php">Pesquisar Produtor</a>
+    </p>
+    <p>
+        <a href="pesquisarPropriedade.php">Pesquisar Propriedade</a>
     </p>
     <p>
         <a href="logout.php">Sair</a>

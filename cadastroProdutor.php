@@ -1,5 +1,6 @@
 <?php
 include('conexao.php');
+include('protect.php');
 
 if(isset($_POST['idProdutor']) && isset($_POST['nomeProdutor']) && isset($_POST['cpfProdutor'])) {
     $idProdutor = $mysqli->real_escape_string($_POST['idProdutor']);
@@ -47,5 +48,9 @@ $mysqli->close();
             <button type="submit" name = "submit">Cadastrar</button>
         </p>
     </form>
+
+    <p>
+        <a href="cadastros_Pesquisas.php">Voltar</a>
+    </p>
 </body>
 </html>
