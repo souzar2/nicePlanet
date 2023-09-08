@@ -1,31 +1,27 @@
 <?php
-// Conexão com o banco de dados
 include('conexao.php');
 
-// Verifica se o formulário foi enviado
 if(isset($_POST['idProdutor']) && isset($_POST['nomeProdutor']) && isset($_POST['cpfProdutor'])) {
-    // Recupera os dados do formulário
     $idProdutor = $mysqli->real_escape_string($_POST['idProdutor']);
     $nomeProdutor = $mysqli->real_escape_string($_POST['nomeProdutor']);
     $cpfProdutor = $mysqli->real_escape_string($_POST['cpfProdutor']);
     
+    $sql = "INSERT INTO Produtor (idProdutor, nomeProdutor, cpfProdutor) 
+            VALUES ('$idProdutor', '$nomeProdutor', '$cpfProdutor')";
 
-    // Insere os dados na tabela "Produtor"
-    $sql = "INSERT INTO Produtor (idProdutor, nomeProdutor, cpfProdutor) VALUES ('$idProdutor', '$nomeProdutor', '$cpfProdutor')";
-
-    if ($mysqli->query($sql)) {
-        echo "Cadastro realizado com sucesso!";
+    if ($mysqli->query($sql) === TRUE) {
+        echo "Cadastro de Produtor realizado com sucesso!";
     } else {
-        echo "Erro ao cadastrar: " . $mysqli->error;
+        echo "Erro na inserção: " . $mysqli->error;
     }
+    
 }
 
-// Fecha a conexão com o banco de dados
 $mysqli->close();
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -34,21 +30,21 @@ $mysqli->close();
 </head>
 <body>
     <h1>Cadastro de Produtor</h1>
-    <form action="cadastros.php" method="POST">
+    <form action="" method="POST">
         <p>
             <label for="idProdutor">ID do Produtor:</label>
-            <input type="number" id="idProdutor" name="idProdutor" required>
+            <input type="number" name="idProdutor" required>
         </p>
         <p>
             <label for="nomeProdutor">Nome do Produtor:</label>
-            <input type="text" id="nomeProdutor" name="nomeProdutor" required>
+            <input type="text" name="nomeProdutor" required>
         </p>
         <p>
             <label for="cpfProdutor">CPF do Produtor:</label>
-            <input type="number" id="cpfProdutor" name="cpfProdutor" required>
+            <input type="number" name="cpfProdutor" required>
         </p>
         <p>
-            <button type="submit">Cadastrar</button>
+            <button type="submit" name = "submit">Cadastrar</button>
         </p>
     </form>
 </body>
